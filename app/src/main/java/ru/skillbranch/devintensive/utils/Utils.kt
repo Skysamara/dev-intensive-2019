@@ -3,7 +3,7 @@ package ru.skillbranch.devintensive.utils
 object Utils {
 
 
-    fun parceFullName(fullName:String?):Pair<String?, String?>{
+    fun parseFullName(fullName:String?):Pair<String?, String?>{
 //TODO + Проверить:
 //        Пример:
 //       + Utils.parseFullName(null) //null null
