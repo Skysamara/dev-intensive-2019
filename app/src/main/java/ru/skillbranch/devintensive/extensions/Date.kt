@@ -58,10 +58,10 @@ fun Date.humanizeDiff():String {
     var prefix = ""
     var postfix = ""
     if (Date().time < this.time) {
-        prefix = "через"
+        prefix = "через "
     }
     else {
-        postfix = "назад"
+        postfix = " назад"
     }
 
     return when (diff) {
@@ -69,15 +69,15 @@ fun Date.humanizeDiff():String {
         in SECOND..45 * SECOND -> "несколько секунд назад"      // 1с - 45с "несколько секунд назад"
         in 45 * SECOND..75 * SECOND -> "минуту назад"           // 45с - 75с "минуту назад"
         in 75 * SECOND..45 * MINUTE -> {                        // 75с - 45мин "N минут назад"
-            "$prefix ${numToWord(diff % (10 * MINUTE) / MINUTE, TimeUnits.MINUTE)} $postfix"
+            "$prefix${numToWord(diff % (10 * MINUTE) / MINUTE, TimeUnits.MINUTE)}$postfix"
         }
         in 45 * MINUTE..75 * MINUTE -> "час назад"              // 45мин - 75мин "час назад"
         in 75 * MINUTE..22 * HOUR -> {                          // 75мин 22ч "N часов назад"
-            "$prefix ${numToWord(diff % (10 * HOUR) / HOUR, TimeUnits.HOUR)} $postfix"
+            "$prefix${numToWord(diff % (10 * HOUR) / HOUR, TimeUnits.HOUR)}$postfix"
         }
         in 22 * HOUR..26 * HOUR -> "день назад"                 // 22ч - 26ч "день назад
         in 26 * HOUR..360 * HOUR -> {                           // 26ч - 360д "N дней назад"
-            "$prefix ${numToWord(diff % (10 * DAY) / DAY, TimeUnits.DAY)} $postfix"
+            "$prefix${numToWord(diff % (10 * DAY) / DAY, TimeUnits.DAY)}$postfix"
         }
             in 360*DAY..Long.MAX_VALUE -> {                     //  >360д "более года назад"
                 if (Date().time < this.time){
