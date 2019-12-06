@@ -46,10 +46,46 @@ enum class TimeUnits{
     fun plural(n: Long): String {
         when(this){
             DAY -> return pluralDay(this, n)
-//            HOUR -> return "hour"
+            HOUR -> return pluralHour(this, n)
+            MINUTE -> return pluralMinute(this, n)
+            SECOND -> return pluralSecond(this, n)
         }
 
         return "XXX"
+    }
+    private fun pluralSecond(timeUnits: TimeUnits, n: Long): String {
+        return when((n%10).toInt()){
+            0 -> "$n секунд"
+            1 -> "$n секунда"
+            in 2..4 -> "$n секунды"
+            in 5..9 -> "$n секунд"
+
+            else -> "ошибка"
+        }
+        return ""
+    }
+    private fun pluralMinute(timeUnits: TimeUnits, n: Long): String {
+        return when((n%10).toInt()){
+            0 -> "$n минут"
+            1 -> "$n минута"
+            in 2..4 -> "$n минуты"
+            in 5..9 -> "$n минут"
+
+            else -> "ошибка"
+        }
+        return ""
+    }
+
+    private fun pluralHour(timeUnits: TimeUnits, n: Long): String {
+        return when((n%10).toInt()){
+            0 -> "$n часов"
+            1 -> "$n час"
+            in 2..4 -> "$n часа"
+            in 5..9 -> "$n часов"
+
+            else -> "ошибка"
+        }
+        return ""
     }
 
     private fun pluralDay(timeUnits: TimeUnits, n: Long): String {
@@ -60,9 +96,7 @@ enum class TimeUnits{
            in 5..9 -> "$n дней"
 
            else -> "ошибка"
-
         }
-
         return ""
     }
 }
