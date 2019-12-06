@@ -41,7 +41,30 @@ enum class TimeUnits{
     SECOND,
     MINUTE,
     HOUR,
-    DAY
+    DAY;
+
+    fun plural(n: Long): String {
+        when(this){
+            DAY -> return pluralDay(this, n)
+//            HOUR -> return "hour"
+        }
+
+        return "XXX"
+    }
+
+    private fun pluralDay(timeUnits: TimeUnits, n: Long): String {
+       return when((n%10).toInt()){
+           0 -> "$n дней"
+           1 -> "$n день"
+           in 2..4 -> "$n дня"
+           in 5..9 -> "$n дней"
+
+           else -> "ошибка"
+
+        }
+
+        return ""
+    }
 }
 
 fun Date.humanizeDiff():String {
