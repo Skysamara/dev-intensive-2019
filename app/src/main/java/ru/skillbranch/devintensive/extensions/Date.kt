@@ -12,7 +12,8 @@ const val HOUR = 60 * MINUTE
 const val DAY = 24 * HOUR
 
 fun Date.format(pattern:String = "HH:mm:ss dd.MM.yy"):String{
-//+ TODO
+//+ TODO Date.format(pattern:String = "HH:mm:ss dd.MM.yy")
+
 //        Реализуй extension Date.format(pattern) возвращающий отформатированную
 //        дату по паттерну передаваемому в качестве аргумента (
 //        значение по умолчанию "HH:mm:ss dd.MM.yy" локаль "ru")
@@ -44,7 +45,8 @@ enum class TimeUnits{
 }
 
 fun Date.humanizeDiff():String {
-//+TODO
+//+TODO Реализуй extension Date.humanizeDiff(date)
+
 //    Реализуй extension Date.humanizeDiff(date) (значение по умолчанию текущий момент времени) для форматирования вывода разницы между датами в человекообразном формате, с учетом склонения числительных. Временные интервалы преобразований к человекообразному формату доступны в ресурсах к заданию
 //    Пример:
 //    Date().add(-2, TimeUnits.HOUR).humanizeDiff() //2 часа назад
