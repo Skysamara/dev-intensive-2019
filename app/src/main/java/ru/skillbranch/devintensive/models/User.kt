@@ -26,6 +26,7 @@ data class User (
     var lastVisit: Date = Date(),
     var isOnline:Boolean = false
 ){
+
 //    constructor(id: String, firstName: String, lastName: String):this(
 //        id = id,    // можноуказать конкретное соответствие параметров
 //        firstName = firstName,
