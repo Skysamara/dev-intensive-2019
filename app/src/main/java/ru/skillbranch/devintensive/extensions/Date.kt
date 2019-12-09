@@ -61,12 +61,12 @@ enum class TimeUnits{
             SECOND -> return pluralSecond(this, n)
         }
 
-        return "XXX"
+//        return "XXX"
     }
     private fun pluralSecond(timeUnits: TimeUnits, n: Long): String {
         return when((n%10).toInt()){
-            0 -> "$n секунд"
-            1 -> "$n секунда"
+            0 -> "$n секунду"
+            1 -> "$n секунду"
             in 2..4 -> "$n секунды"
             in 5..9 -> "$n секунд"
 
@@ -77,7 +77,7 @@ enum class TimeUnits{
     private fun pluralMinute(timeUnits: TimeUnits, n: Long): String {
         return when((n%10).toInt()){
             0 -> "$n минут"
-            1 -> "$n минута"
+            1 -> "$n минуту"
             in 2..4 -> "$n минуты"
             in 5..9 -> "$n минут"
 
