@@ -18,12 +18,12 @@ data class User (
 //    .build() должен вернуть объект User
 
     var id:String = "",
-    var firstName:String = "",
-    var lastName:String = "",
-    var avatar:String = "",
+    var firstName:String? = "",
+    var lastName:String? = "",
+    var avatar:String? = "",
     var rating:Int = 0,
     var respect:Int = 0,
-    var lastVisit: Date = Date(),
+    var lastVisit: Date? = Date(),
     var isOnline:Boolean = false
 ){
 
@@ -52,16 +52,16 @@ data class User (
         """.trimIndent())
     }
 
-//    companion object Factory{
-//        private var lastId : Int = -1
-//        fun makeUser(fullname:String) : User{
-//            lastId++
-//
-//            val (firstName, lastName) = Utils.parseFullName(fullname)
-//            return User(id = "$lastId", firstName = firstName, lastName = lastName)
-//
-//        }
-//    }
+    companion object Factory{
+        private var lastId : Int = -1
+        fun makeUser(fullname:String) : User{
+            lastId++
+
+            val (firstName, lastName) = Utils.parseFullName(fullname)
+            return User(id = "$lastId", firstName = firstName, lastName = lastName)
+
+        }
+    }
 
 
     class Builder(){
