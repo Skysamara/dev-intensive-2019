@@ -44,6 +44,16 @@ enum class TimeUnits{
     DAY;
 
     fun plural(n: Long): String {
+//+TODO Реализуй метод plural для всех перечислений TimeUnits следующего вида TimeUnits.SECOND.plural(value:Int)
+
+//        Реализуй метод plural для всех перечислений TimeUnits следующего вида TimeUnits.SECOND.plural(value:Int)
+//        возвращающую значение в виде строки с праильно склоненной единицой измерения
+//        Пример:
+//        TimeUnits.SECOND.plural(1) //1 секунду
+//        TimeUnits.MINUTE.plural(4) //4 минуты
+//        TimeUnits.HOUR.plural(19) //19 часов
+//        TimeUnits.DAY.plural(222) //222 дня
+
         when(this){
             DAY -> return pluralDay(this, n)
             HOUR -> return pluralHour(this, n)
