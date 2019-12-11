@@ -42,22 +42,30 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
     }
 
     enum class Question(val question: String, val answer:List<String>){
-        NAME("Как меня зовут?", listOf("бендер", "bender")) {
+        //TODO Переделать с учетом задания
+//        Question.NAME -> "Имя должно начинаться с заглавной буквы"
+//        Question.PROFESSION -> "Профессия должна начинаться со строчной буквы"
+//        Question.MATERIAL -> "Материал не должен содержать цифр"
+//        Question.BDAY -> "Год моего рождения должен содержать только цифры"
+//        Question.SERIAL -> "Серийный номер содержит только цифры, и их 7"
+//        Question.IDLE -> //игнорировать валидацию
+
+        NAME("Как меня зовут?", listOf("Бендер", "bender")) {
             override fun nextQuetion(): Question = PROFESSION
         },
-        PROFESSION("Назови мою профессию", listOf("сгибальщик", "bender")) {
+        PROFESSION("Назови мою профессию?", listOf("сгибальщик", "bender")) {
             override fun nextQuetion(): Question = MATERIAL
         },
-        MATERIAL("Из чего я сделан?", listOf("металл", "дерево","iron","wood","metal")) {
+        MATERIAL("Из чего я сделан?", listOf("металл", "дерево", "metal", "iron", "wood")) {
             override fun nextQuetion(): Question = BDAY
         },
         BDAY("Когда меня создали?", listOf("2993")) {
             override fun nextQuetion(): Question = SERIAL
         },
-        SERIAL("Мой серийный номе?", listOf("2716057")) {
+        SERIAL("Мой серийный номер?", listOf("2716057")) {
             override fun nextQuetion(): Question = IDLE
         },
-        IDLE("На этом всё, вопросов больше нет", listOf()) {
+        IDLE("На этом все, вопросов больше нет", listOf()) {
             override fun nextQuetion(): Question = IDLE
         };
 
