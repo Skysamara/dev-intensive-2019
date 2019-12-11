@@ -19,7 +19,8 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
             "Отлично - это правильный ответ!\n${question.question}" to status.color
         } else{
             status = status.nextStatus()
-            "Это неправильный ответ!\n${question.nextQuetion()}" to status.color
+            question.nextQuetion()
+            "Это неправильный ответ!\n${question.question}" to status.color
 
         }
     }
@@ -47,7 +48,7 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
         PROFESSION("Назови мою профессию", listOf("сгибальщик", "bender")) {
             override fun nextQuetion(): Question = MATERIAL
         },
-        MATERIAL("Из чго я сделан?", listOf("металл", "дерево","iron","wood","metal")) {
+        MATERIAL("Из чего я сделан?", listOf("металл", "дерево","iron","wood","metal")) {
             override fun nextQuetion(): Question = BDAY
         },
         BDAY("Когда меня создали?", listOf("2993")) {
@@ -56,7 +57,7 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
         SERIAL("Мой серийный номе?", listOf("2716057")) {
             override fun nextQuetion(): Question = IDLE
         },
-        IDLE("Наэтом всё, вопросов больше нет", listOf()) {
+        IDLE("На этом всё, вопросов больше нет", listOf()) {
             override fun nextQuetion(): Question = IDLE
         };
 
