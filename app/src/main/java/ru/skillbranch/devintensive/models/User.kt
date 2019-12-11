@@ -4,7 +4,7 @@ import ru.skillbranch.devintensive.utils.Utils
 import java.util.*
 
 data class User (
-//+TODO Необходимо реализовать Builder для класса User
+//+ Необходимо реализовать Builder для класса User
 
 //    Реализуй паттерн Builder для класса User.
 //    User.Builder().id(s)
