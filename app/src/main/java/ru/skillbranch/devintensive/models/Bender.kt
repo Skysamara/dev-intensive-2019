@@ -37,6 +37,14 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
 //            Log.d("My_Bender.kt","$status ${status.color}")
 //            return "Это неправильный ответ!\n${question.question}" to status.color
 //        }
+        return if (question.answer.contains(answer)){
+            question = question.nextQuetion()
+            "Отлично - ты справился\n${question.question}" to status.color
+        } else{
+            status = status.nextStatus()
+            question.nextQuetion()
+            "Это неправильный ответ!\n${question.question}" to status.color
+        }
     }
 
     enum class Status(val color : Triple<Int, Int, Int>){
