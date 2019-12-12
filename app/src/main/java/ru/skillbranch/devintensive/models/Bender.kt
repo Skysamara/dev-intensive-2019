@@ -66,7 +66,7 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
     enum class Question(val question: String, val answer:List<String>){
         //TODO Переделать с учетом задания
 
-        NAME("Как меня зовут?", listOf("Бендер", "bender", "бендер", "Bender")) {
+        NAME("Как меня зовут?", listOf("Бендер", "Bender")) {
 //        Question.NAME -> "Имя должно начинаться с заглавной буквы"
             override fun nextQuetion(): Question = PROFESSION
             override fun isAnswerCorrect(answer: String): Boolean {
