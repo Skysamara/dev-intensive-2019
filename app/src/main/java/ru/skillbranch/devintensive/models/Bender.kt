@@ -1,5 +1,7 @@
 package ru.skillbranch.devintensive.models
 
+import android.util.Log
+
 class Bender(var status:Status = Status.NORMAL, var question: Question = Question.NAME) {
 
     fun askQuestion(): String = when(question){
@@ -14,24 +16,27 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
     fun listenAnswer(answer:String):Pair<String, Triple<Int, Int, Int>>{
 
         if (question == Question.IDLE){
+            Log.d("My_Bender.kt","$status ${status.color}")
             return "Отлично - ты справился\nНа этом все, вопросов больше нет" to status.color
         }
 
         if(status == Status.CRITICAL){
             status = Status.NORMAL
             question = Question.NAME
+            Log.d("My_Bender.kt","$status ${status.color}")
             return "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
         }
 
-        if (question.isAnswerCorrect(answer)){
-            question = question.nextQuetion()
+//        if (question.isAnswerCorrect(answer)){
+//            question = question.nextQuetion()
+//            Log.d("My_Bender.kt","$status ${status.color}")
+//            return "Отлично - ты справился\n${question.question}" to status.color
+//        } else
+//        {
 //            status = status.nextStatus()
-            return "Отлично - ты справился\n${question.question}" to status.color
-        } else
-        {
-            status = status.nextStatus()
-            return "Это неправильный ответ!\n${question.question}" to status.color
-        }
+//            Log.d("My_Bender.kt","$status ${status.color}")
+//            return "Это неправильный ответ!\n${question.question}" to status.color
+//        }
     }
 
     enum class Status(val color : Triple<Int, Int, Int>){
