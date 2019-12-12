@@ -26,8 +26,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        benderImage = findViewById(R.id.iv_bender) as ImageView
-//        benderImage = findViewById<ImageView>(R.id.iv_bender)
         benderImage = iv_bender
         textTxt = tv_text
         messageEt = et_message
@@ -43,7 +41,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         val (r,g,b) = benderObj.status.color
         benderImage.setColorFilter(Color.rgb(r,g,b), PorterDuff.Mode.MULTIPLY)
 
-//        textTxt.setText(benderObj.askQuestion())
         textTxt.text = benderObj.askQuestion()
         sendBtn.setOnClickListener(this)
 
@@ -81,6 +78,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
+
         Log.d("My_MainActivity.kt", "onRestoreInstanceState")
     }
 
@@ -97,7 +95,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
         //TODO Ошибка при неправильно ответе
         //https://www.youtube.com/watch?v=cJaatOwP_WA&feature=youtu.be&t=6163
         if (v?.id == R.id.iv_send){
-            val (phrase, color) = benderObj.listenAnswer(messageEt.text.toString().toLowerCase())
+            val (phrase, color) = benderObj.listenAnswer(messageEt.text.toString())
             messageEt.setText("")
             val (r,g,b) = color
             benderImage.setColorFilter(Color.rgb(r,g,b), PorterDuff.Mode.MULTIPLY)

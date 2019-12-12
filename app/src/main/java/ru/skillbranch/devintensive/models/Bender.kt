@@ -12,16 +12,25 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
     }
 
     fun listenAnswer(answer:String):Pair<String, Triple<Int, Int, Int>>{
-        //TODO https://youtu.be/cJaatOwP_WA?t=6163
 
-        return if (question.answer.contains(answer)){
+        if (question == Question.IDLE){
+            return "Отлично - ты справился\nНа этом все, вопросов больше нет" to status.color
+        }
+
+        if(status == Status.CRITICAL){
+            status = Status.NORMAL
+            question = Question.NAME
+            return "Это неправильный ответ. Давай все по новой\n${question.question}" to status.color
+        }
+
+        if (question.isAnswerCorrect(answer)){
             question = question.nextQuetion()
-            "Отлично - это правильный ответ!\n${question.question}" to status.color
-        } else{
+//            status = status.nextStatus()
+            return "Отлично - ты справился\n${question.question}" to status.color
+        } else
+        {
             status = status.nextStatus()
-            question.nextQuetion()
-            "Это неправильный ответ!\n${question.question}" to status.color
-
+            return "Это неправильный ответ!\n${question.question}" to status.color
         }
     }
 
@@ -43,32 +52,51 @@ class Bender(var status:Status = Status.NORMAL, var question: Question = Questio
 
     enum class Question(val question: String, val answer:List<String>){
         //TODO Переделать с учетом задания
-//        Question.NAME -> "Имя должно начинаться с заглавной буквы"
-//        Question.PROFESSION -> "Профессия должна начинаться со строчной буквы"
-//        Question.MATERIAL -> "Материал не должен содержать цифр"
-//        Question.BDAY -> "Год моего рождения должен содержать только цифры"
-//        Question.SERIAL -> "Серийный номер содержит только цифры, и их 7"
-//        Question.IDLE -> //игнорировать валидацию
 
         NAME("Как меня зовут?", listOf("Бендер", "bender")) {
+//        Question.NAME -> "Имя должно начинаться с заглавной буквы"
             override fun nextQuetion(): Question = PROFESSION
+            override fun isAnswerCorrect(answer: String): Boolean {
+                return answer.firstOrNull()?.isUpperCase() ?: false
+            }
         },
         PROFESSION("Назови мою профессию?", listOf("сгибальщик", "bender")) {
+//        Question.PROFESSION -> "Профессия должна начинаться со строчной буквы"
             override fun nextQuetion(): Question = MATERIAL
+            override fun isAnswerCorrect(answer: String): Boolean {
+                return answer.firstOrNull()?.isLowerCase() ?: false
+            }
         },
         MATERIAL("Из чего я сделан?", listOf("металл", "дерево", "metal", "iron", "wood")) {
+//        Question.MATERIAL -> "Материал не должен содержать цифр"
             override fun nextQuetion(): Question = BDAY
+            override fun isAnswerCorrect(answer: String): Boolean {
+                return answer.trim().contains(Regex("\\d")).not()
+            }
         },
         BDAY("Когда меня создали?", listOf("2993")) {
+//        Question.BDAY -> "Год моего рождения должен содержать только цифры"
             override fun nextQuetion(): Question = SERIAL
+            override fun isAnswerCorrect(answer: String): Boolean {
+                return answer.contains(Regex("^[0-9]*$"))
+            }
         },
         SERIAL("Мой серийный номер?", listOf("2716057")) {
+//        Question.SERIAL -> "Серийный номер содержит только цифры, и их 7"
             override fun nextQuetion(): Question = IDLE
+            override fun isAnswerCorrect(answer: String): Boolean {
+                return answer.trim().contains(Regex("^[0-9]{7}$"))
+            }
         },
         IDLE("На этом все, вопросов больше нет", listOf()) {
+//        Question.IDLE -> //игнорировать валидацию
             override fun nextQuetion(): Question = IDLE
+            override fun isAnswerCorrect(answer: String): Boolean {
+                return true
+            }
         };
 
         abstract fun nextQuetion():Question
+        abstract fun isAnswerCorrect(answer: String):Boolean
     }
 }
