@@ -168,14 +168,14 @@
             android:layout_marginLeft="@dimen/spacing_normal_16">
 
             <EditText
-                style="@style/Profile.EditText.Single"
                 android:id="@+id/et_last_name"
+                style="@style/Profile.EditText.Single"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/profile_hint_last_name"
-                tools:text="Doe"
+                android:imeOptions="actionNext"
                 android:inputType="textPersonName"
-                android:imeOptions="actionNext"/>
+                tools:text="Dow" />
 
         </com.google.android.material.textfield.TextInputLayout>
     </RelativeLayout>
