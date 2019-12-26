@@ -43,6 +43,7 @@
                 android:src="@drawable/avatar_default" />
 
             <ImageButton
+                android:id="@+id/btn_edit"
                 android:layout_width="@dimen/btn_round_size_40"
                 android:layout_height="@dimen/btn_round_size_40"
                 android:layout_marginLeft="@dimen/spacing_huge_32"
@@ -53,7 +54,7 @@
 
             <TextView
                 style="@style/Profile.Header.Nickname"
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_nick_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/iv_avatar"
@@ -66,7 +67,7 @@
                 android:id="@+id/tv_rank"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_name"
+                android:layout_below="@id/tv_nick_name"
                 android:layout_centerHorizontal="true"
                 android:text="Junior Android Developer"/>
         </RelativeLayout>
@@ -88,6 +89,7 @@
             android:paddingBottom="@dimen/spacing_normal_16">
             <TextView
                 style="@style/Profile.Metrics.Value"
+                android:id="@+id/tv_rating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -116,6 +118,7 @@
             android:paddingBottom="@dimen/spacing_normal_16">
             <TextView
                 style="@style/Profile.Metrics.Value"
+                android:id="@+id/tv_respecr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="0"
@@ -247,6 +250,7 @@
                 android:imeOptions="actionDone"/>
         </com.google.android.material.textfield.TextInputLayout>
         <ImageView
+            android:id="@+id/ic_eye"
             android:layout_width="24dp"
             android:layout_height="24dp"
             android:src="@drawable/ic_eye_24dp"
