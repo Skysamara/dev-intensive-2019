@@ -19,6 +19,6 @@ data class Profile(
         "about" to about,
         "repository" to repository,
         "rating" to rating,
-        "respec" to respect
+        "respect" to respect
     )
 }
