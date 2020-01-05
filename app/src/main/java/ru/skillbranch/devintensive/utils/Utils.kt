@@ -49,7 +49,8 @@ object Utils {
     fun transliteration(payload:String, divider:String = " "):String?{
 //+ Реализуй метод Utils.transliteration(payload divider)
 
-//        Реализуй метод Utils.transliteration(payload divider) принимающий в качестве аргумента строку (divider по умолчанию " ") и возвращающий преобразованную строку из латинских символов, словарь символов соответствия алфовитов доступен в ресурсах к заданию
+//        Реализуй метод Utils.transliteration(payload divider) принимающий в качестве аргумента строку (divider по умолчанию " ")
+//        и возвращающий преобразованную строку из латинских символов, словарь символов соответствия алфовитов доступен в ресурсах к заданию
 //        Пример:
 //        Utils.transliteration("Женя Стереотипов") //Zhenya Stereotipov
 //        Utils.transliteration("Amazing Петр","_") //Amazing_Petr
